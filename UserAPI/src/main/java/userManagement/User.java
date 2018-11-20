@@ -1,10 +1,24 @@
 package userManagement;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    private int id;
+
+    @Column(name="first_name")
     private String firstName;
+    @Column(name="surname")
     private String surname;
+    @Column(name="street_address")
     private String streetAddress;
+    @Column(name="city")
     private String city;
+    @Column(name="post_code")
     private int postCode;
 
 
@@ -13,11 +27,19 @@ public class User {
     }
 
     public User(String firstName, String surname, String streetAddress, String city, int postCode) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.postCode = postCode;
+        this.setFirstName(firstName);
+        this.setSurname(surname);
+        this.setStreetAddress(streetAddress);
+        this.setCity(city);
+        this.setPostCode(postCode);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -64,6 +86,7 @@ public class User {
 
     public String toString() {
         return "User{ " +
+                id +", " +
                 firstName + ", " +
                 surname + ", " +
                 streetAddress + ", " +

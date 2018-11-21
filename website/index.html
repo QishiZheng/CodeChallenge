@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User Management</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="index.html">User Management</a>
+
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Users</span></a>
+        </li>
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- DataTables -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Users</div>
+            <div class="card-body">
+              <div class="table-responsive">
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th>First Name</th>
+                      <th>Surname</th>
+                      <th>Street Address</th>
+                      <th>City</th>
+                      <th>Post Code</th>
+                    </tr>
+                  </thead>
+                  <tbody id="user_details">
+                    <!-- <tr>
+                      <td>1</td>
+                      <td>Tiger</td>
+                      <td>Nixson</td>
+                      <td>123 Test St</td>
+                      <td>Brisbane</td>
+                      <td>1234</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © PayPont Code Challenge 2018 - Qishi Zheng</span>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script>
+    //populate the user table with AJAX call
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/user",
+            dataType: "JSON",
+
+            success: function(data) {
+                //console.log(data);
+                var content = "";
+                jQuery(data).each(function(i, user){
+                     content += "<tr><td>" + user.id +
+                                  "</td><td>" + user.firstName +
+                                  "</td><td>" + user.surname +
+                                  "</td><td>" + user.streetAddress +
+                                  "</td><td>" + user.city +
+                                  "</td><td>" + user.postCode + "</td></tr>";
+                })
+                $('#user_details').html(content);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+
+    });
+    </script>
+  </body>
+
+</html>

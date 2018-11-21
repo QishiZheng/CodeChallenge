@@ -5,10 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class UserController {
@@ -21,6 +19,7 @@ public class UserController {
 //        return "Hello there, this is the index page";
 //    }
 
+    @CrossOrigin
     @GetMapping("/user")
     public List<User> index() {
         return userRepo.findAll();
@@ -48,21 +47,4 @@ public class UserController {
     }
 
 
-
-
-//    @Transactional
-//    public String createUser(User user) {
-//        User savedUser = userRepo.save(user);
-//        return savedUser.toString();
-//    }
-
-
-
-
-
-//    @PostMapping("/user/search")
-//    public List<User> search(@RequestBody Map<String, String> body){
-//        String searchTerm = body.get("text");
-//        return userRepo.findByTitleContainingOrContentContaining(searchTerm, searchTerm);
-//    }
 }

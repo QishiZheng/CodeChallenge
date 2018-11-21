@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,17 @@ public class UserController {
 
         return ResponseEntity.created(location).build();
     }
+
+
+
+
+//    @Transactional
+//    public String createUser(User user) {
+//        User savedUser = userRepo.save(user);
+//        return savedUser.toString();
+//    }
+
+
 
 
 

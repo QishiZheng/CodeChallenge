@@ -10,5 +10,5 @@ import java.util.List;
 public interface UserRepo extends JpaRepository<User, Integer> {
 
     List<User> findBySurnameContainingOrderByFirstNameAsc(String surname);
-    
+
 }

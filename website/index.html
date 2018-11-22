@@ -155,34 +155,32 @@
     $("#search").click(function(e) {
       e.preventDefault();
       var search_term = $("#search_term").val();
-
-      console.log(search_term);
-      $.ajax({
-        url: "http://localhost:8080/user/search/" + search_term,
-        type: 'GET',
-        dataType: 'JSON',
-        success: function(data){
-          var results = "";
-          jQuery(data).each(function(i, user){
-               results += "<tr><td>" + user.id +
-                            "</td><td>" + user.firstName +
-                            "</td><td>" + user.surname +
-                            "</td><td>" + user.streetAddress +
-                            "</td><td>" + user.city +
-                            "</td><td>" + user.postCode + "</td></tr>";
-          })
-          $('#user_details').html(results);
-        },
-        error: function(error){
-          console.log(error);
-        }
-      });
-
-
+      //console.log(search_term);
+      if(search_term != "") {
+        $.ajax({
+          url: "http://localhost:8080/user/search/" + search_term,
+          type: 'GET',
+          dataType: 'JSON',
+          success: function(data){
+            var results = "";
+            jQuery(data).each(function(i, user){
+                 results += "<tr><td>" + user.id +
+                              "</td><td>" + user.firstName +
+                              "</td><td>" + user.surname +
+                              "</td><td>" + user.streetAddress +
+                              "</td><td>" + user.city +
+                              "</td><td>" + user.postCode + "</td></tr>";
+            })
+            $('#user_details').html(results);
+          },
+          error: function(error){
+            console.log(error);
+          }
+        });
+      } else {
+        alert("Please Enter a surname.");
+      }
     });
-
-
-
     </script>
   </body>
 

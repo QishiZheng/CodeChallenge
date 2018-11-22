@@ -1,7 +1,7 @@
 # CodeChallenge
 This is the solution for Paypont Code Challenge.
 
-#Instructions
+# Instructions
 1. Clone or download the whole application.
 2. Turn on your MySQL server, and import the **userAPI.sql** file in the root directory to create the database for the application.
 3. Go to **/UserAPI/src/main/resources/application.properties**, change database server config, username and password in the file to yours

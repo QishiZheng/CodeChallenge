@@ -28,12 +28,7 @@
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
       <a class="navbar-brand mr-1" href="index.html">User Management</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
     </nav>
 
     <div id="wrapper">
@@ -50,12 +45,29 @@
       <div id="content-wrapper">
 
         <div class="container-fluid">
+          <form class="card card-sm">
+            <div class="card-body row no-gutters align-items-center">
+              <div class="col-auto">
+                <i class="fas fa-search h4 text-body"></i>
+              </div>
+              <!--end of col-->
+              <div class="col">
+                <input class="form-control form-control-lg form-control-borderless" type="search" name="search_term" id="search_term" placeholder="Search by Surnames">
+              </div>
+              <!--end of col-->
+              <div class="col-auto">
+                <button class="btn btn-lg btn-success" id="search" value="Search">Search</button>
+              </div>
+              <!--end of col-->
+            </div>
+          </form>
 
           <!-- DataTables -->
           <div class="card mb-3">
             <div class="card-header">
+              <a href="index.html" class="text-body">
               <i class="fas fa-table"></i>
-              Users</div>
+              Users</div></a>
             <div class="card-body">
               <div class="table-responsive">
 
@@ -111,6 +123,7 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script>
+
     //populate the user table with AJAX call
     $(document).ready(function() {
         $.ajax({
@@ -137,6 +150,39 @@
         });
 
     });
+
+    //send the search term and get result via AJAX call
+    $("#search").click(function(e) {
+      e.preventDefault();
+      var search_term = $("#search_term").val();
+
+      console.log(search_term);
+      $.ajax({
+        url: "http://localhost:8080/user/search/" + search_term,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function(data){
+          var results = "";
+          jQuery(data).each(function(i, user){
+               results += "<tr><td>" + user.id +
+                            "</td><td>" + user.firstName +
+                            "</td><td>" + user.surname +
+                            "</td><td>" + user.streetAddress +
+                            "</td><td>" + user.city +
+                            "</td><td>" + user.postCode + "</td></tr>";
+          })
+          $('#user_details').html(results);
+        },
+        error: function(error){
+          console.log(error);
+        }
+      });
+
+
+    });
+
+
+
     </script>
   </body>
 

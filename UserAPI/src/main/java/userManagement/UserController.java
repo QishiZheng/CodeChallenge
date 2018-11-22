@@ -25,12 +25,14 @@ public class UserController {
         return userRepo.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable String id) {
         int userId = Integer.parseInt(id);
         return userRepo.findById(userId).get();
     }
 
+    @CrossOrigin
     @GetMapping("/user/search/{surname}")
     public List<User> search(@PathVariable("surname") String surname) {
         return userRepo.findBySurnameContainingOrderByFirstNameAsc(surname);

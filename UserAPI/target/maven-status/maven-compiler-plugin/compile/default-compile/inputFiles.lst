@@ -1,3 +1,5 @@
-/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/hello/Application.java
-/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/hello/Greeting.java
-/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/hello/GreetingController.java
+/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/userManagement/User.java
+/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/userManagement/UserRepo.java
+/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/userManagement/Main.java
+/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/userManagement/UserController.java
+/Users/VinceZ/Documents/GIT_ROOT/CodeChallenge/UserAPI/src/main/java/userManagement/UserDataReader.java

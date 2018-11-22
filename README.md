@@ -17,6 +17,6 @@ This is the solution for Paypont Code Challenge.
 5. To host the Application 2 website,
     + Turn on your Apache Web Server.
     + Simply place the whole directory **CodeChallenge/website** in the **htdocs** folder of your server.
-6. Open your browser, and enter **http://localhost/website/index.html**  
+6. Open your browser, and enter **http://localhost/website/index.html** (or just open the web page **CodeChallenge/website/index.html**)
     + The index page will automatically load all user data stored in the database once the page is ready via AJAX.
     + Type in the surname you would like to search in the search bar and click button "Search" button, then the user table will be updated with the search results returned from Application 1 API via AJAX.
